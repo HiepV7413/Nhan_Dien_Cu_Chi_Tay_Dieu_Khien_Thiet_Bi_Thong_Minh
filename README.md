@@ -1,4 +1,4 @@
-<h1 align="center">👋 NHẬN DIỆN CỬ CHỈ TAY (HGR) ĐIỀU KHIỂN NHÀ THÔNG MINH SỬ DỤNG IMU & AI 🧠</h1>
+<h1 align="center">👋 XÂY DỰNG HỆ THỐNG NHẬN DIỆN CỬ CHỈ TAY SỬ DỤNG CẢM BIẾN GIA TỐC ĐỂ ĐIỀU KHIỂN THIẾT BỊ THÔNG MINH 🧠</h1>
 
 <div align="center">
   
@@ -7,9 +7,9 @@
     <img src="images/AIoTLab_logo.png" alt="AIoTLab Logo" width="200"/>
   </p>
 
-  [![Made by DNU IT](https://img.shields.io/badge/Made%20by%20DNU%20IT-blue?style=for-the-badge)](https://dainam.edu.vn)
+  [![Made by AIoTLab](https://img.shields.io/badge/Made%20by%20AIoTLab-blue?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
   [![Fit DNU](https://img.shields.io/badge/Fit%20DNU-green?style=for-the-badge)](https://fitdnu.net/)
-  [![TensorFlow](https://img.shields.io/badge/TensorFlow-LSTM-FF6F00?style=for-the-badge&logo=tensorflow)](https://www.tensorflow.org/)
+  [![DaiNam University](https://img.shields.io/badge/DaiNam%20University-red?style=for-the-badge)](https://dainam.edu.vn)
 
 </div>
 
@@ -35,7 +35,7 @@
 Hệ thống hoạt động qua 3 khối chức năng chính:
 
 <p align="center">
-  <img src="docs/images/kien_truc_luong_online.png" alt="Kiến trúc hệ thống nhận diện cử chỉ" width="800"/>
+  <img src="images/Picture1.png" alt="Kiến trúc hệ thống nhận diện cử chỉ" width="800"/>
 </p>
 
 1. **Khối Cảm biến (Client):** ESP32 + MPU6050. Thu thập 50 mẫu dữ liệu 6 trục khi được kích hoạt và gửi đến Server qua **Port 5000**.
@@ -90,13 +90,13 @@ Project
 ### 🔌 Phần cứng
 - **2 x ESP32 Dev Kit:** Một cho cảm biến (Client) và một cho điều khiển (Control).
 - **1 x Cảm biến MPU6050 (hoặc IMU 6/9 trục khác):** Gắn vào ESP32 Client.
-- **Thiết bị ngoại vi:** LED, Còi Buzzer, Quạt 5V DC (có relay/transistor điều khiển).
+- **Thiết bị ngoại vi:** LED, Còi Buzzer, Màn hình LCD.
 - **Máy chủ:** PC/Laptop chạy Python, kết nối cùng mạng Wi-Fi với các ESP32.
 
 ### 💻 Phần mềm
 - **Arduino IDE:** Với các thư viện `Adafruit_MPU6050`, `WiFiClient`.
-- **Python 3.x:**
-- **Thư viện Python:** `tensorflow`, `numpy`, `pandas`, `sklearn`, `joblib`, `socket`, `keyboard`.
+- **Python 3:**
+  - **Thư viện Python:** `tensorflow`, `numpy`, `pandas`, `sklearn`, `joblib`, `socket`, `keyboard`.
 
 ### 🚨 Lưu ý cấu hình
 - **Địa chỉ IP:** Đảm bảo `serverIP` (trong code Arduino) và `HOST` (trong code Python) trỏ đúng đến IP của máy tính chạy Server Python.
@@ -140,7 +140,6 @@ Project
 
 ## 📖 ÁNH XẠ CỬ CHỈ & LỆNH ĐIỀU KHIỂN 👨‍💻
 
-(Tham khảo file `server_predict.py` và `esp32_control_device.ino`)
 
 | Label Cử chỉ | Tên Cử chỉ (Ví dụ) | Lệnh gửi đến Khối Điều khiển (Port 6000) | Hành động tương ứng |
 |--------------|--------------------|------------------------------------------|----------------------|
@@ -155,12 +154,11 @@ Project
 
 ## 🤝 ĐÓNG GÓP 👥
 
-Dự án được phát triển bởi nhóm sinh viên **CNTT, Trường Đại học Đại Nam** (DNU):
+Dự án được phát triển bởi:
 
 | Họ và Tên        | Vai trò chính trong dự án                                    |
 |------------------|----------------------------------------------------------|
-| **Vũ Văn Hiệp**    | Phát triển mã nguồn Python Server, Huấn luyện AI (LSTM), Thiết kế hệ thống |
-| **Nguyễn Ánh Cương** | Lập trình Arduino (Client & Control), Thu thập dữ liệu, Báo cáo |
-| *Giảng viên Hướng dẫn:* | ThS. Nguyễn Thái Khánh, ThS. Lê Trung Hiếu |
+| **Nguyễn Ánh Cương** | Phát triển mã nguồn Python Server, Huấn luyện AI (LSTM), Thiết kế hệ thống |
+| **Vũ Văn Hiệp** | Lập trình Arduino (Client & Control), Thu thập dữ liệu, Viết báo cáo latex |
 
-© 2025 NHÓM DỰ ÁN AI & IOT, TRƯỜNG ĐẠI HỌC ĐẠI NAM.
+© 2025 NHÓM 3, TRƯỜNG ĐẠI HỌC ĐẠI NAM.
