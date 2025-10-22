@@ -3,8 +3,8 @@
 <div align="center">
   
   <p align="center">
-    <img src="docs/images/logo.png" alt="Dai Nam Logo" width="200"/>
-    <img src="docs/images/AIoTLab_logo.png" alt="AIoTLab Logo" width="200"/>
+    <img src="images/logo.png" alt="Dai Nam Logo" width="200"/>
+    <img src="images/AIoTLab_logo.png" alt="AIoTLab Logo" width="200"/>
   </p>
 
   [![Made by AIoTLab](https://img.shields.io/badge/Made%20by%20AIoTLab-blue?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
@@ -33,7 +33,7 @@
 ## 🏗️ HỆ THỐNG 🔧
 
 <p align="center">
-  <img src="docs/images/image.png" alt="Kiến trúc hệ thống" width="800"/>
+  <img src="images/image.png" alt="Kiến trúc hệ thống" width="800"/>
 </p>
 
 - **Lớp Cảm Biến & Thiết Bị (Edge Devices):** Các module ở từng phòng sử dụng ESP32/ESP8266 để thu thập dữ liệu từ cảm biến và điều khiển thiết bị (LED, quạt, servo, buzzer…). ⚙️📡
@@ -183,7 +183,7 @@ pip install flask pyserial pymongo opencv-python ultralytics numpy
 ## 📰 POSTER 🖼️
 
 <p align="center">
-  <img src="docs/images/POSTER_XIN_XO_CON_BO_pages-to-jpg-0001.jpg" alt="Poster dự án" width="800"/>
+  <img src="images/POSTER_XIN_XO_CON_BO_pages-to-jpg-0001.jpg" alt="Poster dự án" width="800"/>
 </p>
 
 ---
