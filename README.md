@@ -1,44 +1,46 @@
-<h1 align="center">🏠 HỆ THỐNG NHÀ THÔNG MINH TÍCH HỢP AI & IOT 🤖</h1>
+<h1 align="center">👋 NHẬN DIỆN CỬ CHỈ TAY (HGR) ĐIỀU KHIỂN NHÀ THÔNG MINH SỬ DỤNG IMU & AI 🧠</h1>
 
 <div align="center">
-  
-  <p align="center">
-    <img src="docs/images/logo.png" alt="Dai Nam Logo" width="200"/>
-    <img src="docs/images/AIoTLab_logo.png" alt="AIoTLab Logo" width="200"/>
-  </p>
+  
+  <p align="center">
+    <img src="images/logo.png" alt="Dai Nam Logo" width="200"/>
+    <img src="images/AIoTLab_logo.png" alt="AIoTLab Logo" width="200"/>
+  </p>
 
-  [![Made by AIoTLab](https://img.shields.io/badge/Made%20by%20AIoTLab-blue?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
-  [![Fit DNU](https://img.shields.io/badge/Fit%20DNU-green?style=for-the-badge)](https://fitdnu.net/)
-  [![DaiNam University](https://img.shields.io/badge/DaiNam%20University-red?style=for-the-badge)](https://dainam.edu.vn)
+  [![Made by DNU IT](https://img.shields.io/badge/Made%20by%20DNU%20IT-blue?style=for-the-badge)](https://dainam.edu.vn)
+  [![Fit DNU](https://img.shields.io/badge/Fit%20DNU-green?style=for-the-badge)](https://fitdnu.net/)
+  [![TensorFlow](https://img.shields.io/badge/TensorFlow-LSTM-FF6F00?style=for-the-badge&logo=tensorflow)](https://www.tensorflow.org/)
 
 </div>
 
-<h2 align="center">💡 Giải pháp giám sát & điều khiển thông minh trong ngôi nhà hiện đại</h2>
+<h2 align="center">💡 Giải pháp điều khiển thiết bị IoT bằng cử chỉ tay trực quan, chi phí thấp</h2>
 
 <p align="left">
-  Hệ thống Nhà Thông Minh tích hợp công nghệ AI và IoT, cho phép giám sát môi trường và điều khiển các thiết bị trong nhà một cách tự động. Dự án kết hợp phần cứng (ESP32/ESP8266, cảm biến, RFID, LCD, servo, LED, buzzer, v.v...) với phần mềm (Flask Server, giao diện Web, YOLO cho phát hiện người) để tạo ra một hệ thống điều khiển và giám sát toàn diện. 🔌🌐
+  Dự án này trình bày một **Hệ thống nhận diện cử chỉ tay (Hand Gesture Recognition - HGR)** sử dụng **Cảm biến đo lường quán tính (IMU)** MPU6050 kết hợp với vi điều khiển ESP32 và mô hình Học Sâu **Long Short-Term Memory (LSTM)**. Hệ thống hoạt động theo kiến trúc Client-Server (TCP/IP), cho phép người dùng thực hiện các cử chỉ động (ví dụ: 'xoay trái', 'đấm thẳng') để điều khiển các thiết bị ngoại vi trong nhà thông minh (LED, Quạt, Còi). Giải pháp này cân bằng giữa chi phí thấp, tính riêng tư (không dùng camera) và hiệu suất nhận diện cao. 🚀
 </p>
 
 ---
 
-## 🌟 GIỚI THIỆU 🚀
+## 🌟 GIỚI THIỆU HỆ THỐNG 🤖
 
-- **Giám sát đa phòng:** Hệ thống thu thập dữ liệu từ các phòng (Bếp 🍳, Khách 🛋️, Ngủ 🛏️, Cửa Ra Vào 🚪) với các cảm biến nhiệt độ, độ ẩm, khí gas, chuyển động, mưa, và sử dụng RFID để quản lý truy cập.
-- **Điều khiển từ xa:** Trạng thái thiết bị được đồng bộ qua WiFi về Server Flask, cho phép điều khiển từ giao diện Web. 📡💻
-- **Phát hiện người:** Một hệ thống riêng biệt sử dụng ESP32-CAM, YOLO và ESP8266 để phát hiện người trong không gian, từ đó kích hoạt LED cảnh báo. 👤🔍
-- **Giao diện trực quan:** Giao diện web hiển thị dữ liệu cảm biến cập nhật theo thời gian thực và cho phép người dùng điều khiển thiết bị từ xa. 🖥️🎛️
+- **Cảm biến IMU:** Sử dụng MPU6050 để thu thập dữ liệu 6 trục (Gia tốc: $a_x, a_y, a_z$ và Con quay: $g_x, g_y, g_z$) của chuyển động tay.
+- **Mô hình AI:** Xây dựng, huấn luyện và triển khai mô hình **LSTM** để phân loại chính xác các chuỗi thời gian (time-series) cử chỉ.
+- **Kiến trúc TCP/IP:** Giao tiếp Client-Server qua Wi-Fi nội bộ bằng Socket TCP, đảm bảo tốc độ và độ tin cậy của việc truyền dữ liệu cảm biến và lệnh điều khiển.
+- **Điều khiển thời gian thực (Gần):** Sau khi dự đoán cử chỉ, Server Python gửi lệnh đến một ESP32 thứ hai để điều khiển các thiết bị IoT (Quạt, LED, Còi).
 
 ---
 
-## 🏗️ HỆ THỐNG 🔧
+## 🏗️ KIẾN TRÚC HỆ THỐNG 🔧
+
+Hệ thống hoạt động qua 3 khối chức năng chính:
 
 <p align="center">
-  <img src="docs/images/image.png" alt="Kiến trúc hệ thống" width="800"/>
+  <img src="docs/images/kien_truc_luong_online.png" alt="Kiến trúc hệ thống nhận diện cử chỉ" width="800"/>
 </p>
 
-- **Lớp Cảm Biến & Thiết Bị (Edge Devices):** Các module ở từng phòng sử dụng ESP32/ESP8266 để thu thập dữ liệu từ cảm biến và điều khiển thiết bị (LED, quạt, servo, buzzer…). ⚙️📡
-- **Lớp Giao Tiếp & Xử Lý Dữ Liệu:** Dữ liệu được gửi qua WiFi về Server Flask thông qua các API RESTful. 🌐🔗
-- **Lớp Server & Giao Diện Web:** Flask Server xử lý dữ liệu, lưu trữ trạng thái và cung cấp giao diện điều khiển qua Web. Hệ thống phát hiện người cũng có server riêng với video stream và trạng thái cảnh báo. 💻🌟
+1. **Khối Cảm biến (Client):** ESP32 + MPU6050. Thu thập 50 mẫu dữ liệu 6 trục khi được kích hoạt và gửi đến Server qua **Port 5000**.
+2. **Khối Server Xử lý (Python):** PC/Laptop chạy `server_predict.py`. Nhận dữ liệu thô, tiền xử lý (chuẩn hóa), dự đoán bằng mô hình LSTM, và gửi lệnh điều khiển.
+3. **Khối Điều khiển (Control):** ESP32 riêng biệt. Lắng nghe lệnh điều khiển từ Server qua **Port 6000** và kích hoạt thiết bị ngoại vi.
 
 ---
 
@@ -46,35 +48,20 @@
 
 ```
 Project
+├── Arduino_Uno/
+│   ├── esp32 with mpu6050.ino     # 💻 Mã nguồn Client (Thu thập & Gửi dữ liệu IMU)
+│   └── esp32_control_device.ino   # 💻 Mã nguồn Control (Nhận lệnh & Điều khiển thiết bị)
+├── gesture_data/                  # 📊 Chứa dữ liệu IMU
 ├── docs/
-│   ├── images/                 # Hình ảnh minh họa, logo, sơ đồ hệ thống, poster 📸
-│   │   ├── logo.png
-│   │   ├── AIoTLab_logo.png
-│   │   ├── POSTER_XIN_XO_CON_BO_pages-to-jpg-0001.jpg
-│   │   └── image.png
-├── Main_House/
-│   ├── Phong_bep_uno/                # Code cho Phòng Bếp 🍳
-│   │   └── Phong.bepp.ino
-│   ├── Phong_khach_uno/            # Code cho Phòng Khách 🛋️
-│   │   └── Phong_khachhh.ino
-│   ├── Phong_ngu_uno/                # Code cho Phòng Ngủ 🛏️
-│   │   └── PHONG_NGU.ino
-│   └── Cua_ra_vao_uno/                   # Code cho Cửa Ra Vào 🚪
-│       └── _9Control_Led_Icd_Pasword.ino
-├── Server_main_house/
-│   ├── app.py                  # Flask Server của Nhà Thông Minh
-│   └── templates/
-│       └── index.html         # Giao diện Web điều khiển hệ thống
-├── Cam_nhan_dien_nguoi_bat_den/
-│   ├── CameraWebServer/              # Code cho ESP32-CAM (thu hình) 📷
-│   │   └── CameraWebServer.ino
-│   ├── server_people/          # Flask Server với YOLO, video stream, cảnh báo 🚨
-│   │   ├── cam.py
-│   │   └── templates/
-│   │       └── index.html         # Giao diện Web cho hệ thống phát hiện người
-│   ├── ESP8266-BTL-CAM/           # Code cho ESP8266 bật LED theo trạng thái cảnh báo 💡
-│   │   └── ESP8266-BTL-CAM.ino
-└── README.md                   # Tệp hướng dẫn dự án (bạn đang xem) 📖
+│   └── images/                    # 🖼️ Chứa hình ảnh (logo, sơ đồ kiến trúc)
+├── collect_data.py                # Luồng Offline: Script Server TCP thu thập dữ liệu thô
+├── clean_data_trim_window.py      # Luồng Offline: Script Tiền xử lý (cắt tĩnh, cửa sổ trượt)
+├── train_lstm.py                  # Luồng Offline: Script Huấn luyện mô hình LSTM
+├── server_predict.py              # Luồng Online: Script Server TCP dự đoán thời gian thực
+├── gesture_model_lstm.h5          # Tệp mô hình LSTM đã huấn luyện
+├── scaler.joblib                  # Tệp bộ chuẩn hóa (StandardScaler) dùng cho dự đoán
+├── model_config.json              # Tệp cấu hình mô hình (max_len, n_features)
+└── README.md                      # Tệp hướng dẫn dự án (Bạn đang xem)
 ```
 
 ---
@@ -84,17 +71,16 @@ Project
 <div align="center">
 
 ### 📡 Phần cứng
-[![ESP32](https://img.shields.io/badge/ESP32-4MB%20Flash-blue?style=for-the-badge&logo=espressif)](https://www.espressif.com/)
-[![ESP8266](https://img.shields.io/badge/ESP8266-80MHz-orange?style=for-the-badge&logo=espressif)](https://www.espressif.com/)
-[![Arduino](https://img.shields.io/badge/Arduino-IDE-00979D?style=for-the-badge&logo=arduino)](https://www.arduino.cc/)
-[![RFID](https://img.shields.io/badge/RFID-MFRC522-green?style=for-the-badge)](https://github.com/miguelbalboa/rfid)
-[![Camera](https://img.shields.io/badge/ESP32--CAM-Yes-green?style=for-the-badge)](https://www.ai-thinker.com/)
+[![ESP32](https://img.shields.io/badge/ESP32-32--Pin-blue?style=for-the-badge&logo=espressif)](https://www.espressif.com/)
+[![MPU6050](https://img.shields.io/badge/MPU6050-IMU%20(6--Axis)-green?style=for-the-badge&logo=bosch)](https://www.invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/)
+[![Arduino IDE](https://img.shields.io/badge/Arduino-IDE-00979D?style=for-the-badge&logo=arduino)](https://www.arduino.cc/)
+[![TCP/IP](https://img.shields.io/badge/Protocol-TCP/IP-orange?style=for-the-badge)](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)
 
 ### 🖥️ Phần mềm
 [![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python)]()
-[![Flask](https://img.shields.io/badge/Flask-Framework-black?style=for-the-badge&logo=flask)]()
-[![YOLO](https://img.shields.io/badge/YOLO-Model-red?style=for-the-badge)]()
-[![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-blue?style=for-the-badge)]()
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow)]()
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-v1.x-F7931E?style=for-the-badge&logo=scikit-learn)]()
+[![NumPy](https://img.shields.io/badge/NumPy-Data%20Processing-013243?style=for-the-badge&logo=numpy)]()
 </div>
 
 ---
@@ -102,100 +88,79 @@ Project
 ## 🛠️ YÊU CẦU HỆ THỐNG 🔌
 
 ### 🔌 Phần cứng
-- **ESP32/ESP8266:** Dùng để lập trình các module cảm biến. 🤖
-- **Cảm biến:**  
-  - DHT11 (nhiệt độ, độ ẩm) 🌡️
-  - Cảm biến khí gas (Phòng Bếp) ⛽
-  - HC-SR04 (Phòng Khách) 📡
-  - Cảm biến mưa (Phòng Ngủ) ☔
-  - RFID RC522 và bàn phím ma trận (Cửa Ra Vào) 🛂
-  - ESP32-CAM (cho phát hiện người) 📷
-- **Thiết bị điều khiển:**  
-  - LCD I2C 🖥️
-  - LED, buzzer, quạt, servo 🔄
+- **2 x ESP32 Dev Kit:** Một cho cảm biến (Client) và một cho điều khiển (Control).
+- **1 x Cảm biến MPU6050 (hoặc IMU 6/9 trục khác):** Gắn vào ESP32 Client.
+- **Thiết bị ngoại vi:** LED, Còi Buzzer, Quạt 5V DC (có relay/transistor điều khiển).
+- **Máy chủ:** PC/Laptop chạy Python, kết nối cùng mạng Wi-Fi với các ESP32.
 
 ### 💻 Phần mềm
-- **Python 3**
-- **Flask Framework** 🍶
-- **Thư viện YOLO (ultralytics)** và OpenCV cho hệ thống phát hiện người 👁️
+- **Arduino IDE:** Với các thư viện `Adafruit_MPU6050`, `WiFiClient`.
+- **Python 3.x:**
+- **Thư viện Python:** `tensorflow`, `numpy`, `pandas`, `sklearn`, `joblib`, `socket`, `keyboard`.
+
+### 🚨 Lưu ý cấu hình
+- **Địa chỉ IP:** Đảm bảo `serverIP` (trong code Arduino) và `HOST` (trong code Python) trỏ đúng đến IP của máy tính chạy Server Python.
+- **Port:** Port 5000 (Data) và Port 6000 (Control) phải được mở và không bị Firewall chặn.
 
 ---
 
-## 🚀 HƯỚNG DẪN CÀI ĐẶT & CHẠY ⚙️
+## 🚀 HƯỚNG DẪN TRIỂN KHAI ⚙️
 
-### 1. Nạp chương trình cho các module
-- **Sử dụng Arduino IDE:**  
-  Mở từng file mã nguồn trong thư mục `Main_House/` (`Phong_bep_uno/Phong.bepp.ino`, `Phong_khach_uno/Phong_khachhh.ino`, `Phong_ngu_uno/PHONG_NGU.ino`, `Cua_ra_vao_uno/_9Control_Led_Icd_Pasword.ino`) và nạp lên board tương ứng.
-- **ESP32-CAM:**  
-  Mở file `CameraWebServer/CameraWebServer.ino` và nạp lên board ESP32-CAM.
-- **ESP8266 (Phát Hiện Người – LED):**  
-  Nạp file `ESP8266-BTL-CAM/ESP8266-BTL-CAM.ino` lên board ESP8266.
+### 1. Chuẩn bị Mô hình AI (Luồng Offline)
 
-### 2. Cài đặt Python và các thư viện cần thiết
-Cài đặt Python 3 và sau đó cài đặt các thư viện bằng lệnh:
-```bash
-pip install flask pyserial pymongo opencv-python ultralytics numpy
-```
+#### A. Thu thập Dữ liệu
+1. **Kết nối:** Nạp `esp32 with mpu6050.ino` lên ESP32 Cảm biến và đảm bảo nó kết nối được với Server Python.
+2. **Chạy thu thập:** Trên PC, chạy script:
+   ```bash
+   python scripts/collect_data.py
+   ```
+3. **Thực hiện cử chỉ:** Khi Server yêu cầu (ví dụ: `[GESTURE] === Thu cử chỉ 5 ===`), người dùng thực hiện cử chỉ. Dữ liệu sẽ được lưu vào `data/gesture_data/`.
 
-### 3. Cấu hình Server
-- **Flask Server (Nhà Thông Minh):**  
-  Chạy file `Server_main_house/app.py`:
-  ```bash
-  python app.py
-  ```
-- **Flask Server (Phát Hiện Người):**  
-  Chạy file `Server_cam/cam.py`:
-  ```bash
-  python cam.py
-  ```
+#### B. Tiền xử lý & Huấn luyện
+1. **Tiền xử lý:** Làm sạch, cắt bỏ phần tĩnh và tạo cửa sổ trượt:
+   ```bash
+   python scripts/clean_data_trim_window.py
+   ```
+2. **Huấn luyện:** Xây dựng, huấn luyện mô hình LSTM và lưu các tệp cần thiết vào thư mục `models/`:
+   ```bash
+   python scripts/train_lstm.py
+   ```
 
-### 4. Chạy giao diện quản lý (nếu có)
-- Mở trình duyệt và truy cập vào `http://localhost:5000` để xem giao diện của Nhà Thông Minh.
-- Với hệ thống phát hiện người, truy cập vào URL tương ứng (ví dụ: `http://localhost:5000`) để xem video stream và cảnh báo.
+### 2. Chạy Hệ thống Điều khiển (Luồng Online - Thời gian thực)
 
----
-
-## 📖 HƯỚNG DẪN SỬ DỤNG 👨‍💻
-
-1. **Giám sát & điều khiển nhà thông minh:**
-   - Các module tự động gửi dữ liệu cảm biến lên Flask Server.
-   - Giao diện Web hiển thị thông tin từng phòng và cho phép điều khiển từ xa (bật/tắt LED, quạt, cửa sổ…). 
-2. **Phát hiện người:**
-   - ESP32-CAM thu hình và gửi dữ liệu về Flask Server chạy YOLO để phân tích.
-   - Khi phát hiện người, trạng thái cảnh báo được cập nhật và ESP8266 sẽ bật LED.
-   - Giao diện Web của hệ thống phát hiện người hiển thị video stream và thông báo cảnh báo.
+1. **Nạp code Điều khiển:** Nạp `esp32_control_device.ino` lên ESP32 Điều khiển. Thiết bị này sẽ kết nối với Server Python qua Port 6000.
+2. **Khởi động Server:** Chạy Server dự đoán chính. Server sẽ tải mô hình, mở Port 5000 và 6000:
+   ```bash
+   python scripts/server_predict.py
+   ```
+3. **Kích hoạt:** Khi Server đã sẵn sàng, nhấn phím **'s'** trên Server để gửi lệnh **"start 0"** đến Khối Cảm biến.
+4. **Thực hiện:** Người dùng thực hiện cử chỉ. Sau khi 50 mẫu được gửi về, Server sẽ dự đoán và gửi lệnh điều khiển tương ứng đến Khối Điều khiển.
 
 ---
 
-## ⚙️ CẤU HÌNH & GHI CHÚ 🔧
+## 📖 ÁNH XẠ CỬ CHỈ & LỆNH ĐIỀU KHIỂN 👨‍💻
 
-1. **Cổng kết nối Arduino:**  
-   Mặc định cổng COM được cấu hình trong file Python (có thể điều chỉnh nếu cần).
-2. **Cấu hình WiFi:**  
-   Cập nhật SSID, mật khẩu trong các file mã nguồn (Arduino & ESP32-CAM, ESP8266).
-3. **Endpoint API:**  
-   Đảm bảo các endpoint trên Flask Server được cập nhật chính xác với địa chỉ IP và cổng của máy chủ.
-4. **Thời gian cập nhật:**  
-   Các module gửi dữ liệu định kỳ, giao diện Web tự động refresh sau 5 giây.
+(Tham khảo file `server_predict.py` và `esp32_control_device.ino`)
 
----
-
-## 📰 POSTER 🖼️
-
-<p align="center">
-  <img src="docs/images/POSTER_XIN_XO_CON_BO_pages-to-jpg-0001.jpg" alt="Poster dự án" width="800"/>
-</p>
+| Label Cử chỉ | Tên Cử chỉ (Ví dụ) | Lệnh gửi đến Khối Điều khiển (Port 6000) | Hành động tương ứng |
+|--------------|--------------------|------------------------------------------|----------------------|
+| **5** | Xoay Trái          | `FAN_ON`                                 | Bật Quạt             |
+| **6** | Đấm Thẳng          | `LED_ON`                                 | Bật LED              |
+| **7** | Xoay Phải          | `FAN_OFF`                                | Tắt Quạt             |
+| **8** | Hất lên            | `LED_OFF`                                | Tắt LED              |
+| **9** | Đấm xuống          | `BUZZER_ON`                              | Bật Còi báo          |
+| **10** | Vẫy qua lại        | `BUZZER_OFF`                             | Tắt Còi báo          |
 
 ---
 
 ## 🤝 ĐÓNG GÓP 👥
 
-Dự án được phát triển bởi:
-| Họ và Tên        | Vai trò                                                    |
-|------------------|------------------------------------------------------------|
-| Vũ Văn Hiệp      | Phát triển mã nguồn, thiết kế hệ thống, thiết kế giao diện, thuyết trình |
-| Trần Thị Thu Lan | Đề xuất cải tiến, PowerPoint, thiết kế mô hình, video, hỗ trợ bài tập lớn   |
-| Xa Đức Đồng      | Thiết kế slide PowerPoint, thiết kế mô hình, đề xuất cải tiến, hỗ trợ bài tập lớn      |
-| Trần Hồng Quân   | Phát triển mã nguồn, thiết kế Poster, viết báo cáo latex, hỗ trợ bài tập lớn    |
+Dự án được phát triển bởi nhóm sinh viên **CNTT, Trường Đại học Đại Nam** (DNU):
 
-© 2025 NHÓM 3, CNTT16-02, TRƯỜNG ĐẠI HỌC ĐẠI NAM.  
+| Họ và Tên        | Vai trò chính trong dự án                                    |
+|------------------|----------------------------------------------------------|
+| **Vũ Văn Hiệp**    | Phát triển mã nguồn Python Server, Huấn luyện AI (LSTM), Thiết kế hệ thống |
+| **Nguyễn Ánh Cương** | Lập trình Arduino (Client & Control), Thu thập dữ liệu, Báo cáo |
+| *Giảng viên Hướng dẫn:* | ThS. Nguyễn Thái Khánh, ThS. Lê Trung Hiếu |
+
+© 2025 NHÓM DỰ ÁN AI & IOT, TRƯỜNG ĐẠI HỌC ĐẠI NAM.
