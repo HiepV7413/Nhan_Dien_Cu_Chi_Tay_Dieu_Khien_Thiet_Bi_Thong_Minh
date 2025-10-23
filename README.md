@@ -16,7 +16,7 @@
 <h2 align="center">💡 Giải pháp điều khiển thiết bị IoT bằng cử chỉ tay trực quan, chi phí thấp</h2>
 
 <p align="left">
-  Dự án này trình bày một Hệ thống nhận diện cử chỉ tay (Hand Gesture Recognition - HGR) sử dụng Cảm biến đo lường quán tính (IMU) hay còn gọi là cảm biến gia tốc MPU6050 kết hợp với vi điều khiển ESP32 và mô hình Học Sâu Long Short-Term Memory (LSTM). Hệ thống hoạt động theo kiến trúc Client-Server (TCP/IP), cho phép người dùng thực hiện các cử chỉ động (ví dụ: 'xoay trái', 'đấm thẳng') để điều khiển các thiết bị ngoại vi trong nhà thông minh (LED, Còi, LCD). Giải pháp này cân bằng giữa chi phí thấp, tính riêng tư (không dùng camera) và hiệu suất nhận diện cao. 🚀
+  Dự án này trình bày một Hệ thống nhận diện cử chỉ tay (Hand Gesture Recognition - HGR) sử dụng Cảm biến đo lường quán tính (IMU) hay còn gọi là cảm biến gia tốc MPU6050 kết hợp với vi điều khiển ESP32 và mô hình Học Sâu Long Short-Term Memory (LSTM). Hệ thống hoạt động theo kiến trúc Client-Server (TCP/IP), cho phép người dùng thực hiện các cử chỉ động (ví dụ: 'xoay trái', 'đấm thẳng') để điều khiển các thiết bị ngoại vi trong nhà thông minh (LED, Còi, LCD, Quạt). Giải pháp này cân bằng giữa chi phí thấp, tính riêng tư (không dùng camera) và hiệu suất nhận diện cao. 🚀
 </p>
 
 ---
@@ -26,7 +26,7 @@
 - **Cảm biến IMU:** Sử dụng MPU6050 để thu thập dữ liệu 6 trục (Gia tốc: $a_x, a_y, a_z$ và Con quay: $g_x, g_y, g_z$) của chuyển động tay.
 - **Mô hình AI:** Xây dựng, huấn luyện và triển khai mô hình **LSTM** để phân loại chính xác các chuỗi thời gian (time-series) cử chỉ.
 - **Kiến trúc TCP/IP:** Giao tiếp Client-Server qua Wi-Fi nội bộ bằng Socket TCP, đảm bảo tốc độ và độ tin cậy của việc truyền dữ liệu cảm biến và lệnh điều khiển.
-- **Điều khiển thời gian thực (Gần):** Sau khi dự đoán cử chỉ, Server Python gửi lệnh đến một ESP32 thứ hai để điều khiển các thiết bị IoT (LED, Còi, LCD).
+- **Điều khiển thời gian thực (Gần):** Sau khi dự đoán cử chỉ, Server Python gửi lệnh đến một ESP32 thứ hai để điều khiển các thiết bị IoT (LED, Còi, LCD, Quạt).
 
 ---
 
@@ -90,7 +90,7 @@ Project
 ### 🔌 Phần cứng
 - **2 x ESP32 Dev Kit:** Một cho cảm biến (Client) và một cho điều khiển (Control).
 - **1 x Cảm biến MPU6050 (hoặc IMU 6/9 trục khác):** Gắn vào ESP32 Client.
-- **Thiết bị ngoại vi:** LED, Còi Buzzer, Màn hình LCD.
+- **Thiết bị ngoại vi:** LED, Còi Buzzer, Màn hình LCD, Quạt.
 - **Máy chủ:** PC/Laptop chạy Python, kết nối cùng mạng Wi-Fi với các ESP32.
 
 ### 💻 Phần mềm
@@ -143,12 +143,13 @@ Project
 
 | Label Cử chỉ | Tên Cử chỉ (Ví dụ) | Lệnh gửi đến Khối Điều khiển (Port 6000) | Hành động tương ứng |
 |--------------|--------------------|------------------------------------------|----------------------|
-| **5** | Xoay Trái          | `FAN_ON`                                 | Bật Quạt             |
-| **6** | Đấm Thẳng          | `LED_ON`                                 | Bật LED              |
-| **7** | Xoay Phải          | `FAN_OFF`                                | Tắt Quạt             |
-| **8** | Hất lên            | `LED_OFF`                                | Tắt LED              |
-| **9** | Đấm xuống          | `BUZZER_ON`                              | Bật Còi báo          |
-| **10** | Vẫy qua lại        | `BUZZER_OFF`                             | Tắt Còi báo          |
+| **0** | Tay Đứng Im       | `BUZZER_OFF`                                 | Tắt Còi báo              |
+| **1** | Vẫy Trái          | `LED_ON`                                     | Bật LED                  |
+| **2** | Vẫy Phải          | `LED_OFF`                                    | Tắt LED                  |
+| **3** | Chặt Xuống        | `BUZZER_ON`                                  | Bật Còi báo              |
+| **4** | Hất Lên           | `LCD_COUNTDOWN`                              | Màn Hình LCD Đếm Ngược   |
+| **5** | Xoay Trái         | `FAN_ON`                                     | Bật Quạt                 |
+| **6** | Đấm Thẳng         | `FAN_OFF`                                    | Tắt Quạt                 |
 
 ---
 
