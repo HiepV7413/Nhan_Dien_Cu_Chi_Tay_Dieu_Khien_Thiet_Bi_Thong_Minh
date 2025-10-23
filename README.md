@@ -159,4 +159,4 @@ Dự án được phát triển bởi:
 - **Nguyễn Ánh Cương**
 - **Vũ Văn Hiệp**
 
-© 2025 KHOA CÔNG NGHỆ THÔNG TIN, TRƯỜNG ĐẠI HỌC ĐẠI NAM.
+© 2025 NHÓM 3, KHOA CÔNG NGHỆ THÔNG TIN, TRƯỜNG ĐẠI HỌC ĐẠI NAM.
