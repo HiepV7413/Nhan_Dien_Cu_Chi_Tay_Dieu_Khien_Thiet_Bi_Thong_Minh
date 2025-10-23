@@ -52,8 +52,7 @@ Project
 │   ├── esp32 with mpu6050.ino     # 💻 Mã nguồn Client (Thu thập & Gửi dữ liệu IMU)
 │   └── esp32_control_device.ino   # 💻 Mã nguồn Control (Nhận lệnh & Điều khiển thiết bị)
 ├── gesture_data/                  # 📊 Chứa dữ liệu IMU
-├── docs/
-│   └── images/                    # 🖼️ Chứa hình ảnh (logo, sơ đồ kiến trúc)
+├── images/                        # 🖼️ Chứa hình ảnh (logo, sơ đồ kiến trúc)
 ├── collect_data.py                # Luồng Offline: Script Server TCP thu thập dữ liệu thô
 ├── clean_data_trim_window.py      # Luồng Offline: Script Tiền xử lý (cắt tĩnh, cửa sổ trượt)
 ├── train_lstm.py                  # Luồng Offline: Script Huấn luyện mô hình LSTM
