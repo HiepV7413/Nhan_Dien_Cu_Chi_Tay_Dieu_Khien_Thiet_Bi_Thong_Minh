@@ -152,13 +152,11 @@ Project
 
 ---
 
-## 🤝 ĐÓNG GÓP 👥
+## 🤝 TÁC GIẢ 👥
 
 Dự án được phát triển bởi:
 
-| Họ và Tên        | Vai trò chính trong dự án                                    |
-|------------------|----------------------------------------------------------|
-| **Nguyễn Ánh Cương** | Phát triển mã nguồn Python Server, Huấn luyện AI (LSTM), Thiết kế hệ thống |
-| **Vũ Văn Hiệp** | Lập trình Arduino (Client & Control), Thu thập dữ liệu, Viết báo cáo latex |
+- **Nguyễn Ánh Cương**
+- **Vũ Văn Hiệp**
 
-© 2025 NHÓM 3, TRƯỜNG ĐẠI HỌC ĐẠI NAM.
+© 2025 KHOA CÔNG NGHỆ THÔNG TIN, TRƯỜNG ĐẠI HỌC ĐẠI NAM.
